@@ -1,7 +1,6 @@
 import 'package:book_app/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:book_app/features/home/presentation/views/widgets/feature_book_list_view.dart';
 import 'package:flutter/material.dart';
-
-import 'feature_list_view_item.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -9,35 +8,27 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
-        children: const [
-          CustomAppBar(),
-          FeatureBookListView(),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const CustomAppBar(),
+          const FeatureBookListView(),
+          const SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Text(
+              'Best Seller',
+              style: ThemeData().textTheme.titleMedium!.copyWith(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w600,
+                    height: 1.2,
+                  ),
+            ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class FeatureBookListView extends StatelessWidget {
-  const FeatureBookListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: ListView.builder(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        physics: const BouncingScrollPhysics(),
-        itemCount: 5,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: FeatureListViewItem(),
-          );
-        },
       ),
     );
   }

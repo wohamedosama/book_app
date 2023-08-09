@@ -1,4 +1,5 @@
-import 'package:book_app/constants.dart';
+import 'package:book_app/core/utils/theme/dark_theme.dart';
+import 'package:book_app/core/utils/theme/light_theme.dart';
 import 'package:book_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,9 +14,9 @@ class BookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: kPrimaryColor,
-      ),
+      themeMode: ThemeMode.dark,
+      darkTheme: darkTheme,
+      theme: lightTheme,
       debugShowCheckedModeBanner: false,
       home: const SplashView(),
     );

@@ -25,6 +25,7 @@ class CustomAppBar extends StatelessWidget {
             icon: const Icon(
               Icons.search,
               size: 30,
+              color: Colors.white,
             ),
           ),
         ],
