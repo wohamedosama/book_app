@@ -24,8 +24,8 @@ class CustomAppBar extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               Icons.search,
-              size: 30,
               color: Colors.white,
+              size: 30,
             ),
           ),
         ],

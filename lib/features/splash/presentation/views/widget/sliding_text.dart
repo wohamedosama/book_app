@@ -1,3 +1,4 @@
+import 'package:book_app/core/utils/theme/dark_theme.dart';
 import 'package:flutter/material.dart';
 
 class SlidingText extends StatelessWidget {
@@ -15,8 +16,9 @@ class SlidingText extends StatelessWidget {
       builder: (BuildContext context, _) {
         return SlideTransition(
           position: slidingAnimation,
-          child: const Text(
+          child: Text(
             'Read Free Book',
+            style: darkTheme.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
         );
