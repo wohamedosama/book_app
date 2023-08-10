@@ -1,8 +1,7 @@
+import 'package:book_app/core/utils/app_router.dart';
 import 'package:book_app/core/utils/theme/dark_theme.dart';
 import 'package:book_app/core/utils/theme/light_theme.dart';
-import 'package:book_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 void main() {
   runApp(const BookApp());
@@ -13,12 +12,14 @@ class BookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       themeMode: ThemeMode.dark,
       darkTheme: darkTheme,
       theme: lightTheme,
       debugShowCheckedModeBanner: false,
-      home: const SplashView(),
     );
   }
 }
+
+// GoRouter configuration
