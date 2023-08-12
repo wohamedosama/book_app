@@ -10,7 +10,8 @@ class CustomSearchTextField extends StatelessWidget {
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
         hintText: 'Search',
-        hintStyle: const TextStyle(color: Colors.white),
+        hintStyle:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.w100),
         prefixIcon: Opacity(
           opacity: 0.7,
           child: IconButton(
