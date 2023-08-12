@@ -1,10 +1,8 @@
 import 'package:book_app/constants.dart';
-import 'package:book_app/core/utils/app_router.dart';
 import 'package:book_app/core/utils/assets.dart';
 import 'package:book_app/core/utils/theme/dark_theme.dart';
 import 'package:book_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -14,9 +12,7 @@ class BestSellerListViewItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: GestureDetector(
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kBookDetailsView);
-        },
+        onTap: () {},
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
