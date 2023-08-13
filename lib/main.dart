@@ -21,5 +21,3 @@ class BookApp extends StatelessWidget {
     );
   }
 }
-
-// GoRouter configuration
