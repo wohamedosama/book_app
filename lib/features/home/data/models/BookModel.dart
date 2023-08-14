@@ -27,6 +27,7 @@ class BookModel {
         ? SearchInfo.fromJson(json['searchInfo'])
         : null;
   }
+
   String? kind;
   String? id;
   String? etag;
@@ -66,6 +67,7 @@ class SearchInfo {
   SearchInfo.fromJson(dynamic json) {
     textSnippet = json['textSnippet'];
   }
+
   String? textSnippet;
 
   Map<String, dynamic> toJson() {
@@ -101,6 +103,7 @@ class AccessInfo {
     accessViewStatus = json['accessViewStatus'];
     quoteSharingAllowed = json['quoteSharingAllowed'];
   }
+
   String? country;
   String? viewability;
   bool? embeddable;
@@ -140,6 +143,7 @@ class Pdf {
   Pdf.fromJson(dynamic json) {
     isAvailable = json['isAvailable'];
   }
+
   bool? isAvailable;
 
   Map<String, dynamic> toJson() {
@@ -157,6 +161,7 @@ class Epub {
   Epub.fromJson(dynamic json) {
     isAvailable = json['isAvailable'];
   }
+
   bool? isAvailable;
 
   Map<String, dynamic> toJson() {
@@ -178,6 +183,7 @@ class SaleInfo {
     saleability = json['saleability'];
     isEbook = json['isEbook'];
   }
+
   String? country;
   String? saleability;
   bool? isEbook;
@@ -245,12 +251,13 @@ class VolumeInfo {
         : null;
     imageLinks = json['imageLinks'] != null
         ? ImageLinks.fromJson(json['imageLinks'])
-        : null;
+        : Image.image as ImageLinks;
     language = json['language'];
     previewLink = json['previewLink'];
     infoLink = json['infoLink'];
     canonicalVolumeLink = json['canonicalVolumeLink'];
   }
+
   String? title;
   List<String>? authors;
   String? publisher;
@@ -319,6 +326,7 @@ class ImageLinks {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
+
   String? smallThumbnail;
   String? thumbnail;
 
@@ -340,6 +348,7 @@ class PanelizationSummary {
     containsEpubBubbles = json['containsEpubBubbles'];
     containsImageBubbles = json['containsImageBubbles'];
   }
+
   bool? containsEpubBubbles;
   bool? containsImageBubbles;
 
@@ -361,6 +370,7 @@ class ReadingModes {
     text = json['text'];
     image = json['image'];
   }
+
   bool? text;
   bool? image;
 
@@ -382,6 +392,7 @@ class IndustryIdentifiers {
     type = json['type'];
     identifier = json['identifier'];
   }
+
   String? type;
   String? identifier;
 
@@ -391,4 +402,9 @@ class IndustryIdentifiers {
     map['identifier'] = identifier;
     return map;
   }
+}
+
+class Image {
+  static String image =
+      'https://books.google.com/books/content?id=yqp9AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api';
 }
