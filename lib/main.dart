@@ -11,7 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   setupServiceLocator();
-  MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
+
   runApp(const BookApp());
 }
 

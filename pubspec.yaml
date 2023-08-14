@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  url_launcher: ^6.1.11
   cached_network_image: ^3.2.3
   flutter:
     sdk: flutter
@@ -73,9 +74,9 @@ flutter:
   assets:
     - assets/images/
   fonts:
-     - family: Montserrat
-       fonts:
-         - asset: assets/fonts/Montserrat-ExtraLight.ttf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-ExtraLight.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

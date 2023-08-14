@@ -1,11 +1,14 @@
 import 'package:book_app/core/utils/theme/dark_theme.dart';
+import 'package:book_app/features/home/data/models/BookModel.dart';
 import 'package:book_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:book_app/features/home/presentation/views/widgets/books_action.dart';
 import 'package:book_app/features/home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +17,26 @@ class BookDetailsSection extends StatelessWidget {
     return Column(children: [
       Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.2),
-        child: const CustomBookImage(
-          imageUrl:
-              'https://img.freepik.com/free-vector/technology-devops-people-standing-around-work-sequence-icon-computer_82472-538.jpg?w=740&t=st=1692015887~exp=1692016487~hmac=e956ba7199e21b4b65c1e6e0c3edfab36697fdc820447e238ede46d64894f0f3',
+        child: CustomBookImage(
+          imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ??
+              'https://books.google.com/books/content?id=yqp9AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         ),
       ),
       const SizedBox(height: 43),
       Text(
-        'The Jungle Book',
+        bookModel.volumeInfo!.title!,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
         style: darkTheme.textTheme.titleMedium!.copyWith(
           fontSize: 30,
-          letterSpacing: 1.2,
         ),
+        textAlign: TextAlign.center,
       ),
       const SizedBox(height: 6),
       Opacity(
         opacity: 0.7,
         child: Text(
-          'Rudyard Kipling',
+          bookModel.volumeInfo!.authors!.first,
           style: darkTheme.textTheme.titleLarge!.copyWith(
               fontSize: 18,
               fontStyle: FontStyle.italic,
@@ -40,13 +45,15 @@ class BookDetailsSection extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 16),
-      const BookRating(
+      BookRating(
         mainAxisAlignment: MainAxisAlignment.center,
-        rating: 4.8,
-        counter: 250,
+        rating: bookModel.volumeInfo!.averageRating ?? 0,
+        counter: bookModel.volumeInfo!.ratingsCount ?? 0,
       ),
       const SizedBox(height: 37),
-      const BooksAction(),
+      BooksAction(
+        bookModel: bookModel,
+      ),
     ]);
   }
 }

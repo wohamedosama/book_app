@@ -10,8 +10,7 @@ class SimilarBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SimilarBooksCubit, SimilarBooksState>(
-      listener: (context, state) {},
+    return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
       builder: (context, state) {
         if (state is SimilarBooksSuccessState) {
           return SizedBox(
@@ -19,21 +18,22 @@ class SimilarBooksListView extends StatelessWidget {
             child: ListView.builder(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               physics: const BouncingScrollPhysics(),
-              itemCount: 10,
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.0),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: CustomBookImage(
-                    imageUrl:
-                        'https://img.freepik.com/free-vector/technology-devops-people-standing-around-work-sequence-icon-computer_82472-538.jpg?w=740&t=st=1692015887~exp=1692016487~hmac=e956ba7199e21b4b65c1e6e0c3edfab36697fdc820447e238ede46d64894f0f3',
+                    imageUrl: state
+                            .books[index].volumeInfo!.imageLinks?.thumbnail ??
+                        'https://books.google.com/books/content?id=yqp9AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
                   ),
                 );
               },
             ),
           );
         } else if (state is SimilarBooksFailureState) {
-          return CustomErrorWidget(errorMessage: state.error);
+          return CustomErrorWidget(errorMessage: state.error.toString());
         } else {
           return const CustomCircularProgressIndicator();
         }

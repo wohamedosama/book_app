@@ -249,9 +249,9 @@ class VolumeInfo {
     panelizationSummary = json['panelizationSummary'] != null
         ? PanelizationSummary.fromJson(json['panelizationSummary'])
         : null;
-    imageLinks = json['imageLinks'] != null
-        ? ImageLinks.fromJson(json['imageLinks'])
-        : Image.image as ImageLinks;
+    imageLinks = json['imageLinks'] == null
+        ? null
+        : ImageLinks.fromJson(json['imageLinks']);
     language = json['language'];
     previewLink = json['previewLink'];
     infoLink = json['infoLink'];

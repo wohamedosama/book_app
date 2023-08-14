@@ -1,9 +1,11 @@
+import 'package:book_app/core/utils/app_router.dart';
 import 'package:book_app/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:book_app/core/widgets/custom_error_widget.dart';
 import 'package:book_app/features/home/presentation/manager/feature_books_cubit/feature_book_cubit.dart';
 import 'package:book_app/features/home/presentation/manager/feature_books_cubit/feature_book_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'custom_book_item.dart';
 
@@ -26,9 +28,17 @@ class FeatureBookListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CustomBookImage(
-                      imageUrl: state
-                          .books[index].volumeInfo!.imageLinks!.thumbnail!),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kBookDetailsView,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: CustomBookImage(
+                        imageUrl: state
+                            .books[index].volumeInfo!.imageLinks!.thumbnail!),
+                  ),
                 );
               },
             ),

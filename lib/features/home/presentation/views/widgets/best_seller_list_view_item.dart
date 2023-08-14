@@ -18,8 +18,10 @@ class BookListViewItem extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context)
-              .push(AppRouter.kBookDetailsView, extra: bookModel);
+          GoRouter.of(context).push(
+            AppRouter.kBookDetailsView,
+            extra: bookModel,
+          );
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +29,8 @@ class BookListViewItem extends StatelessWidget {
             SizedBox(
                 height: 150,
                 child: CustomBookImage(
-                  imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
+                  imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ??
+                      'https://books.google.com/books/content?id=yqp9AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
                 )),
             const SizedBox(width: 30),
             Expanded(
@@ -43,7 +46,7 @@ class BookListViewItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    bookModel.volumeInfo!.authors!.first,
+                    bookModel.volumeInfo!.authors!.last,
                     style: darkTheme.textTheme.titleMedium!.copyWith(
                       fontWeight: FontWeight.normal,
                       fontSize: 14,
@@ -64,7 +67,8 @@ class BookListViewItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       BookRating(
-                        rating: bookModel.volumeInfo!.averageRating ?? 0,
+                        rating:
+                            bookModel.volumeInfo!.averageRating?.round() ?? 0,
                         counter: bookModel.volumeInfo!.ratingsCount ?? 0,
                       ),
                     ],
