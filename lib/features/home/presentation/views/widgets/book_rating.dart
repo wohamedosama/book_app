@@ -2,10 +2,16 @@ import 'package:book_app/core/utils/theme/dark_theme.dart';
 import 'package:flutter/material.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating(
-      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+  const BookRating({
+    super.key,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.rating,
+    required this.counter,
+  });
 
   final MainAxisAlignment mainAxisAlignment;
+  final num rating;
+  final num counter;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class BookRating extends StatelessWidget {
         ),
         const SizedBox(width: 6.3),
         Text(
-          '4.8',
+          '$rating',
           style: darkTheme.textTheme.titleMedium!.copyWith(
             fontFamily: 'Gilroy-Bold',
             fontSize: 16,
@@ -30,7 +36,7 @@ class BookRating extends StatelessWidget {
         Opacity(
           opacity: 0.5,
           child: Text(
-            '(254)',
+            '$counter',
             style: darkTheme.textTheme.titleMedium!.copyWith(
               fontSize: 14,
               fontWeight: FontWeight.w900,
